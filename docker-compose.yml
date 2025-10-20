@@ -1,0 +1,16 @@
+#Author: Roopesh Kumar Reddy Kaipa
+#Date: 10/19/2025
+version: '3.8'
+
+services:
+  qr_code_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - QR_CODE_DIR=/app/qr_codes
+      - FILL_COLOR=maroon
+      - BACK_COLOR=black
+    volumes:
+      - ./qr_codes:/app/qr_codes  # Maps the local 'qr_codes' directory to '/app/qr_codes' in the container
+    command: --url https://hub.docker.com/r/zabuza1704/qr_code_maker  # Replace 'main.py' with your script's filename if different
